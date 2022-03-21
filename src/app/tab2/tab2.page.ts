@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Geolocation } from '@capacitor/geolocation';
+
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +9,16 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  coordinates: any
+  printCurrentPosition = async () => {
+    const coord = await Geolocation.getCurrentPosition();
+  
+    this.coordinates=coord;
+  };
 
+  constructor() {
+    this.printCurrentPosition();
+  }
+
+  
 }
